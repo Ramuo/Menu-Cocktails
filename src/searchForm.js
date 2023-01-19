@@ -1,0 +1,20 @@
+import get from './getElement.js'
+import presentDrinks from './presentDrinks.js';
+
+const baseURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+
+// selection of DOM element
+const form = get('.search-form');
+const input = get('[name="drink"]');
+
+
+//evt on form
+form.addEventListener('keyup', (e)=>{
+    e.preventDefault();
+    const value = input.value;
+   if(!value){
+        return;
+   }else{
+    presentDrinks(`${baseURL} ${value}`);
+   }
+}, false);
